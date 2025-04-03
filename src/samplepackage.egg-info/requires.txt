@@ -1,0 +1,5 @@
+
+[doc]
+mkdocs
+mkdocstrings[python]
+requests

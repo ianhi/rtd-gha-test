@@ -1,0 +1,1 @@
+./wheel_artifact/*.whl["doc"]

@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: samplepackage
+Version: 0.1.0
+Summary: A sample Python package
+Author-email: Your Name <you@example.com>
+Provides-Extra: doc
+Requires-Dist: mkdocs; extra == "doc"
+Requires-Dist: mkdocstrings[python]; extra == "doc"
+Requires-Dist: requests; extra == "doc"

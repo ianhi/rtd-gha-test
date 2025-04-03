@@ -1,0 +1,9 @@
+site_name: Sample Package Documentation
+nav:
+  - Home: index.md
+
+plugins:
+  - mkdocstrings
+
+theme:
+  name: readthedocs
