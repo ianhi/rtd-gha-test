@@ -2,6 +2,9 @@ name: PR Build Wheel
 
 on:
   pull_request:
+  push:
+    branch:
+      main
 
 jobs:
   build-wheel:
@@ -32,11 +35,18 @@ jobs:
         uses: actions/checkout@v3
 
       # Only trigger docs if tests pass.
-      - name: Trigger RTD Build
-        run: |
-          curl -X POST "https://readthedocs.org/api/v3/webhook/trigger/<project_slug>/" \
-            -H "Content-Type: application/json" \
-            -d '{"version": "latest"}'
+      - name: Trigger RTDs build
+        uses: dfm/rtds-action@v1
+        with:
+          webhook_url: ${{ secrets.RTDS_WEBHOOK_URL }}
+          webhook_token: ${{ secrets.RTDS_WEBHOOK_TOKEN }}
+          commit_ref: ${{ github.ref }}
+
+      # - name: Trigger RTD Build
+      #   run: |
+      #     curl -X POST https://readthedocs.org/api/v2/webhook/rtd-gha-test/294297/ \
+      #       -H "Content-Type: application/json" \
+      #       -d '{"version": "latest"}'
       
       # Optionally, add steps here to poll the build status and update a GitHub status or post a comment.
       # For example, using a script to poll RTD API and then calling the GitHub API:
