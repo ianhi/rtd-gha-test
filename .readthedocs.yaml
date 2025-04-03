@@ -13,5 +13,5 @@ mkdocs:
   configuration: docs/mkdocs.yml
 
 commands:
-  pre_build:
+  pre_install:
     - python docs/fetch_artifact.py
