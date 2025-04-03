@@ -38,9 +38,11 @@ jobs:
       - name: Webhook
         uses: joelwmale/webhook-action@master
         with:
+        with:
           url: ${{ secrets.RTDS_WEBHOOK_URL }}
-          headers: '{"repository": "joelwmale/webhook-action"}'
-          body: '{"event": "deployment", "repository": "joelwmale/webhook-action"}'
+          method: POST
+          body: '{"branches": "refs/pull/${{ github.event.number }}/merge"}'
+          headers: '{"Content-Type": "application/json"}'
           github_event_payload: true
       # - name: Trigger RTDs build
       #   uses: dfm/rtds-action@v1
