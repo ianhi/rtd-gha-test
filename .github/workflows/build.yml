@@ -38,7 +38,6 @@ jobs:
       - name: Webhook
         uses: joelwmale/webhook-action@master
         with:
-        with:
           url: ${{ secrets.RTDS_WEBHOOK_URL }}
           method: POST
           body: '{"branches": "refs/pull/${{ github.event.number }}/merge"}'
